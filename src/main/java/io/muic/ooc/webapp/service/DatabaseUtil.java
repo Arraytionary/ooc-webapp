@@ -96,8 +96,8 @@ public class DatabaseUtil {
             ps.setString(5,userName);
             ps.setString(1,password);
             ps.setString(2,name);
-            ps.setString(3,lastName);
-            ps.setString(4,email);
+            ps.setString(3,email);
+            ps.setString(4,lastname);
             ps.executeUpdate();
 
             return true;

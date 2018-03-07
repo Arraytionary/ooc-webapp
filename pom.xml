@@ -61,11 +61,6 @@
         </dependency>
     </dependencies>
     <build>
-        <resources>
-            <resource>
-                <directory>src/main/webapp</directory>
-            </resource>
-        </resources>
         <plugins>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
@@ -75,7 +70,7 @@
                     <assembleDirectory>target</assembleDirectory>
                     <programs>
                         <program>
-                            <mainClass>io.muic.ooc.webapp.Webapp</mainClass>
+                            <mainClass>io.muic.ooc.webapp.Main</mainClass>
                             <name>webapp</name>
                         </program>
                     </programs>
@@ -87,6 +82,27 @@
                             <goal>assemble</goal>
                         </goals>
                     </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                <execution>
+                <phase>package</phase>
+                <goals>
+                    <goal>shade</goal>
+                </goals>
+                <configuration>
+                    <transformers>
+                        <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                            <mainClass>io.muic.ooc.webapp.Webapp</mainClass>
+                            <name>webapp</name>
+                        </transformer>
+                    </transformers>
+                </configuration>
+                </execution>
                 </executions>
             </plugin>
         </plugins>

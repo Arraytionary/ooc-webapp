@@ -1,6 +1,5 @@
 package io.muic.ooc.webapp.servlet;
 
-import com.mysql.jdbc.StringUtils;
 import io.muic.ooc.webapp.Routable;
 import io.muic.ooc.webapp.service.DatabaseUtil;
 import io.muic.ooc.webapp.service.SecurityService;
@@ -12,7 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 public class DeleteServlet extends HttpServlet implements Routable {

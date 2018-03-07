@@ -1,11 +1,11 @@
 package io.muic.ooc.webapp.servlet;
 
-import com.mysql.jdbc.StringUtils;
 import io.muic.ooc.webapp.Routable;
 import io.muic.ooc.webapp.service.DatabaseUtil;
 import io.muic.ooc.webapp.service.Encryption;
 import io.muic.ooc.webapp.service.SecurityService;
 
+import org.apache.commons.lang3.StringUtils;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -40,7 +40,7 @@ public class EditServlet extends HttpServlet implements Routable {
         PrintWriter out = response.getWriter();
         System.out.println(userToEdit+" gg wp");
         System.out.println(password+"pass");
-        if(!StringUtils.isEmptyOrWhitespaceOnly(password) && !StringUtils.isEmptyOrWhitespaceOnly(Name) && !StringUtils.isEmptyOrWhitespaceOnly(Email) && !StringUtils.isEmptyOrWhitespaceOnly(LastName)) {
+        if(!StringUtils.isAllBlank(password) && !StringUtils.isAllBlank(Name) && !StringUtils.isAllBlank(Email) && !StringUtils.isAllBlank(LastName)) {
             if(DatabaseUtil.editUser(userToEdit, Encryption.encryptPassword(password), Name, Email, LastName)){
                 System.out.println("create account successful");
                 response.sendRedirect("/user");

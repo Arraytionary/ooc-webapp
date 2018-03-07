@@ -1,6 +1,6 @@
 package io.muic.ooc.webapp.servlet;
 
-import com.mysql.jdbc.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import io.muic.ooc.webapp.Routable;
 import io.muic.ooc.webapp.service.DatabaseUtil;
 import io.muic.ooc.webapp.service.SecurityService;
@@ -35,7 +35,7 @@ public class RegistServlet extends HttpServlet implements Routable {
             PrintWriter out = response.getWriter();
 
             System.out.println(username);
-            if (!StringUtils.isEmptyOrWhitespaceOnly(username) && !StringUtils.isEmptyOrWhitespaceOnly(password) && !StringUtils.isEmptyOrWhitespaceOnly(Name) && !StringUtils.isEmptyOrWhitespaceOnly(Email) && !StringUtils.isEmptyOrWhitespaceOnly(LastName)) {
+            if (!StringUtils.isAllBlank(username) && !StringUtils.isAllBlank(password) && !StringUtils.isAllBlank(Name) && !StringUtils.isAllBlank(Email) && !StringUtils.isAllBlank(LastName)) {
                 if (DatabaseUtil.addUser(username, password, Name, Email, LastName)) {
                     out.println("create account successful");
                     response.sendRedirect("/login");
